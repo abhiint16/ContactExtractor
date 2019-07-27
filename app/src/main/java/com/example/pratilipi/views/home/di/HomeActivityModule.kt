@@ -1,9 +1,9 @@
-package com.example.pratilipi.views.di
+package com.example.pratilipi.views.home.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.example.pratilipi.datamanager.DataManager
 import com.example.pratilipi.utils.ViewModelProviderFactory
-import com.example.pratilipi.views.viewmodel.HomeActivityViewModel
+import com.example.pratilipi.views.home.viewmodel.HomeActivityViewModel
 import dagger.Module
 import dagger.Provides
 

@@ -1,11 +1,11 @@
-package com.example.pratilipi.views.viewmodel
+package com.example.pratilipi.views.detail.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pratilipi.datamanager.DataManager
 
-class HomeActivityViewModel : ViewModel {
+class DetailActivityViewModel : ViewModel {
     var dataManager: DataManager
 
     internal var mutableLiveData = MutableLiveData<Boolean>()

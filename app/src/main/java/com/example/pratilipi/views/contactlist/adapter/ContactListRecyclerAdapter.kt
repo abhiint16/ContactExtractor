@@ -1,4 +1,4 @@
-package com.example.pratilipi.views.home.adapter
+package com.example.pratilipi.views.contactlist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pratilipi.R
 import com.example.pratilipi.databinding.ItemDetailBinding
 
-class DetailRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ContactListRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding: ItemDetailBinding = DataBindingUtil.inflate(

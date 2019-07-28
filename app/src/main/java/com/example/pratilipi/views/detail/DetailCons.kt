@@ -14,4 +14,6 @@ object DetailCons {
     const val CONTACT_MIMETYPE = 1
     const val CONTACT_DATA1 = 2
 
+    const val NOT_AVAILABLE = "Not Available"
+
 }

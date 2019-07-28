@@ -45,11 +45,11 @@ class DetailUtil {
     fun iterateLoader(data: Cursor?, pos: Int, contentResolver: ContentResolver): DetailModel {
         val detailModel: DetailModel
         var id: Long = 0
-        var lookupKey = ""
-        var displayName = ""
-        var displayUri = ""
-        var phone = ""
-        var email = ""
+        var lookupKey: String
+        var displayName: String = DetailCons.NOT_AVAILABLE
+        var displayUri = DetailCons.NOT_AVAILABLE
+        var phone = DetailCons.NOT_AVAILABLE
+        var email = DetailCons.NOT_AVAILABLE
 
         while (data?.moveToPosition(pos)!!) {
             id = data.getLong(DetailCons.CONTACT_ID)

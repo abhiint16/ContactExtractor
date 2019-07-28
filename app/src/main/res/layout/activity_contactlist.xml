@@ -2,24 +2,34 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
 
+        <variable name="listVisibility"
+                  type="Boolean"/>
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <!--<androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/recyclerview"/>-->
-
         <ListView android:layout_width="match_parent"
                   android:layout_height="0dp"
+                  android:visibility="@{listVisibility?View.VISIBLE:View.GONE, default = visible}"
                   app:layout_constraintTop_toTopOf="parent"
                   app:layout_constraintBottom_toBottomOf="parent"
                   android:id="@+id/listView"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/textview"
+                  android:textColor="@android:color/black"
+                  android:textStyle="bold"
+                  android:textSize="@dimen/text_size_16"
+                  android:padding="@dimen/dimen_20"
+                  android:gravity="center"
+                  android:text="@string/empty_text"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  android:visibility="@{listVisibility?View.GONE:View.VISIBLE, default = gone}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

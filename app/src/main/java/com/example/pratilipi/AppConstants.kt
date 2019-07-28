@@ -10,8 +10,9 @@ object AppConstants {
     }
 
     object ContactList {
+        const val CURSOR_POS = "cursorPos"
 
-
+        const val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
     }
 
 }

@@ -21,6 +21,7 @@ import android.R.attr.data
 import android.provider.Telephony.Mms.Addr.CONTACT_ID
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.example.pratilipi.AppConstants
 
 class DetailActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -75,7 +76,7 @@ class DetailActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor
 
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        var detailModel = detailUtil.iterateLoader(data, intent.getIntExtra("cursorPos", 0), contentResolver)
+        var detailModel = detailUtil.iterateLoader(data, intent.getIntExtra(AppConstants.ContactList.CURSOR_POS, 0), contentResolver)
         binding.item = detailModel
         Glide.with(this).load(detailModel.displayUri).into(binding.image)
     }

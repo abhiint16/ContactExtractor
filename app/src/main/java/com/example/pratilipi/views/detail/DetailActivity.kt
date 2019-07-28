@@ -17,9 +17,6 @@ import com.example.pratilipi.databinding.ActivityDetailBinding
 import com.example.pratilipi.views.detail.viewmodel.DetailActivityViewModel
 import dagger.android.AndroidInjection
 import javax.inject.Inject
-import android.R.attr.data
-import android.provider.Telephony.Mms.Addr.CONTACT_ID
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.pratilipi.AppConstants
 
@@ -31,9 +28,9 @@ class DetailActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor
     @Inject
     lateinit var detailUtil: DetailUtil
 
-    lateinit var detailActivityViewModel: DetailActivityViewModel
+    private lateinit var detailActivityViewModel: DetailActivityViewModel
 
-    lateinit var binding: ActivityDetailBinding
+    private lateinit var binding: ActivityDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +58,7 @@ class DetailActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor
     }
 
     private fun initObserver() {
-        detailActivityViewModel.observeForLiveData().observe(this, Observer { boolean ->
+        detailActivityViewModel.observeForLiveData().observe(this, Observer {
             Toast.makeText(this, "Live Data Observed", Toast.LENGTH_LONG).show()
         })
     }
@@ -76,20 +73,13 @@ class DetailActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor
 
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        var detailModel = detailUtil.iterateLoader(data, intent.getIntExtra(AppConstants.ContactList.CURSOR_POS, 0), contentResolver)
+        val detailModel = detailUtil.iterateLoader(data, intent.getIntExtra(AppConstants.ContactList.CURSOR_POS, 0), contentResolver)
         binding.item = detailModel
         Glide.with(this).load(detailModel.displayUri).into(binding.image)
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        /* when (loader.id) {
-             DETAILS_QUERY_ID -> {
-                 *//*
-             * If you have current references to the Cursor,
-             * remove them here.
-             *//*
-            }
-        }*/
+        // do nothing
     }
 
     override fun onDestroy() {

@@ -43,21 +43,18 @@ class DetailUtil {
     }
 
     fun iterateLoader(data: Cursor?, pos: Int, contentResolver: ContentResolver): DetailModel {
-        var detailModel: DetailModel
+        val detailModel: DetailModel
         var id: Long = 0
-        var lookup_key = ""
-        var display_name = ""
+        var lookupKey = ""
+        var displayName = ""
         var displayUri = ""
         var phone = ""
         var email = ""
 
         while (data?.moveToPosition(pos)!!) {
-            if (data.getLong(DetailCons.CONTACT_ID) != null)
-                id = data.getLong(DetailCons.CONTACT_ID)
-            if (data.getLong(DetailCons.CONTACT_LOOKUP_KEY) != null)
-                lookup_key = data.getString(DetailCons.CONTACT_LOOKUP_KEY)
-            if (data.getLong(DetailCons.CONTACT_DISPLAY_NAME) != null)
-                display_name = data.getString(DetailCons.CONTACT_DISPLAY_NAME)
+            id = data.getLong(DetailCons.CONTACT_ID)
+            lookupKey = data.getString(DetailCons.CONTACT_LOOKUP_KEY)
+            displayName = data.getString(DetailCons.CONTACT_DISPLAY_NAME)
             if (data.getString(DetailCons.PHOTO_URI) != null)
                 displayUri = data.getString(DetailCons.PHOTO_URI)
 
@@ -65,7 +62,7 @@ class DetailUtil {
                 ContactsContract.Data.CONTENT_URI,
                 DATA_PROJECTION,
                 DATA_SELECTION,
-                arrayOf(lookup_key),
+                arrayOf(lookupKey),
                 null
             )
 
@@ -73,7 +70,7 @@ class DetailUtil {
                 ContactsContract.Data.CONTENT_URI,
                 DATA_PROJECTION,
                 DATA_SELECTION1,
-                arrayOf(lookup_key),
+                arrayOf(lookupKey),
                 null
             )
 
@@ -92,10 +89,11 @@ class DetailUtil {
             }
 
             details.close()
+            details1.close()
 
             break
         }
-        detailModel = DetailModel(id, display_name, displayUri, phone, email)
+        detailModel = DetailModel(id, displayName, displayUri, phone, email)
         return detailModel
     }
 

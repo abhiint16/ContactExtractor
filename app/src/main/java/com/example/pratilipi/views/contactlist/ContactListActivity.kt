@@ -38,9 +38,9 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
     @Inject
     lateinit var contactListScopeUtil: ContactListScopeUtil
 
-    lateinit var contactListActivityViewModel: ContactListActivityViewModel
+    private lateinit var contactListActivityViewModel: ContactListActivityViewModel
 
-    lateinit var binding: ActivityContactlistBinding
+    private lateinit var binding: ActivityContactlistBinding
 
     private val searchString: String = ""
 
@@ -55,8 +55,7 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
         initListView()
         initViewModel()
         initObserver()
-        checkForPermision()
-        setUp()
+        checkForPermission()
     }
 
     private fun initListView() {
@@ -69,10 +68,6 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
         binding.listView.adapter = cursorAdapter
 
         binding.listView.onItemClickListener = this
-    }
-
-    private fun setUp() {
-
     }
 
     private fun initViewModel() {
@@ -89,7 +84,7 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
     }
 
     private fun initObserver() {
-        contactListActivityViewModel.observeForLiveData().observe(this, Observer { boolean ->
+        contactListActivityViewModel.observeForLiveData().observe(this, Observer {
             Toast.makeText(this, "Live Data Observed", Toast.LENGTH_LONG).show()
         })
     }
@@ -112,7 +107,7 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         cursorAdapter?.swapCursor(data)
-        supportActionBar?.title = "Total Contact = " + data?.count
+        supportActionBar?.title = "Total Contact = ".plus(data?.count)
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
@@ -154,7 +149,7 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
         }
     }
 
-    fun checkForPermision() {
+    private fun checkForPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
             != PackageManager.PERMISSION_GRANTED
         ) {

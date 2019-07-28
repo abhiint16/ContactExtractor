@@ -1,7 +1,5 @@
 package com.example.pratilipi.views.detail
 
-import android.provider.ContactsContract
-
 object DetailCons {
 
     const val CONTACTS_LOADER = 0
@@ -15,6 +13,5 @@ object DetailCons {
     // The indixes here must be aligned with the fields order in DATA_PROJECTION
     const val CONTACT_MIMETYPE = 1
     const val CONTACT_DATA1 = 2
-
 
 }

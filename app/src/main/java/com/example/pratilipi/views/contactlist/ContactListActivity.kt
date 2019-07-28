@@ -196,7 +196,7 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
 
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        Toast.makeText(this, "click done", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "click done", Toast.LENGTH_LONG).show()
         // Get the Cursor
         val cursor: Cursor? = (cursorAdapter as? CursorAdapter)?.cursor?.apply {
             // Move to the selected contact
@@ -208,7 +208,7 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
             // Create the contact's content Uri
             contactUri = ContactsContract.Contacts.getLookupUri(contactId, contactKey)
 
-            toDetailScreen()
+            toDetailScreen(position)
 
             /** You can use contactUri as the content URI for retrieving
              * the details for a contact.*/
@@ -216,8 +216,9 @@ class ContactListActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<C
         }
     }
 
-    private fun toDetailScreen() {
+    private fun toDetailScreen(pos: Int) {
         val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("cursorPos", pos)
         startActivity(intent)
     }
 }

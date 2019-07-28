@@ -52,6 +52,6 @@ class AppModule {
     @Provides
     @PreferenceName
     fun providesSharedPrefName(): String {
-        return AppConstants.SHARED_PREFERENCE_NAME;
+        return AppConstants.SharedPref.SHARED_PREFERENCE_NAME;
     }
 }
